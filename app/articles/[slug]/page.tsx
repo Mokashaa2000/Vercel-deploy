@@ -211,7 +211,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
               {/* Article Content */}
               <div
-                className="prose prose-sm sm:prose-base lg:prose-lg max-w-none 
+                className="article-content prose prose-sm sm:prose-base lg:prose-lg max-w-none 
   prose-headings:text-gray-900 prose-headings:leading-tight
   prose-h1:text-2xl sm:prose-h1:text-3xl 
   prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:font-bold prose-h2:leading-snug
