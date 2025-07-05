@@ -212,17 +212,17 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               {/* Article Content */}
               <div
                 className="prose prose-sm sm:prose-base lg:prose-lg max-w-none 
-                prose-headings:text-gray-900 prose-headings:leading-tight
-                prose-h1:text-2xl sm:prose-h1:text-3xl 
-                prose-h2:text-xl sm:prose-h2:text-2xl 
-                prose-h3:text-lg sm:prose-h3:text-xl 
-                prose-p:text-gray-700 prose-p:leading-relaxed
-                prose-strong:text-gray-900 
-                prose-blockquote:border-l-[#042a5c] prose-blockquote:text-gray-700 
-                prose-a:text-[#042a5c] prose-a:no-underline hover:prose-a:underline 
-                prose-img:rounded-lg prose-img:w-full
-                prose-ul:space-y-2 prose-ol:space-y-2
-                prose-li:text-gray-700"
+  prose-headings:text-gray-900 prose-headings:leading-tight
+  prose-h1:text-2xl sm:prose-h1:text-3xl 
+  prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:font-bold prose-h2:leading-snug
+  prose-h3:text-lg sm:prose-h3:text-xl 
+  prose-p:text-gray-700 prose-p:leading-relaxed
+  prose-strong:text-gray-900 
+  prose-blockquote:border-l-[#042a5c] prose-blockquote:text-gray-700 
+  prose-a:text-[#042a5c] prose-a:no-underline hover:prose-a:underline 
+  prose-img:rounded-lg prose-img:w-full
+  prose-ul:space-y-2 prose-ol:space-y-2
+  prose-li:text-gray-700"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
 
