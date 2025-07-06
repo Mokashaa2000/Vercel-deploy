@@ -73,7 +73,6 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 }
 
-// JSON-LD Structured Data Component
 function ArticleStructuredData({ article }: { article: any }) {
   const baseUrl = getBaseUrl()
 
@@ -109,56 +108,35 @@ function ArticleStructuredData({ article }: { article: any }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 }
 
-// Breadcrumbs Component
 function Breadcrumbs({ article }: { article: any }) {
+  const baseUrl = getBaseUrl()
+
   const breadcrumbStructuredData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: getBaseUrl(),
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Articles",
-        item: `${getBaseUrl()}/articles`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: article.title,
-        item: `${getBaseUrl()}/articles/${article.slug}`,
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Articles", item: `${baseUrl}/articles` },
+      { "@type": "ListItem", position: 3, name: article.title, item: `${baseUrl}/articles/${article.slug}` },
     ],
   }
 
   return (
     <>
-      <nav aria-label="Breadcrumb" className="mb-6 sm:mb-8">
-        <ol className="flex flex-wrap items-center space-x-1 sm:space-x-2 text-sm text-gray-600">
+      <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-500">
+        <ol className="flex flex-wrap items-center space-x-2">
           <li>
-            <Link href="/" className="flex items-center gap-2 font-bold text-base sm:text-xl">
-              <span>MKProfit</span>
-            </Link>
+            <Link href="/" className="hover:underline font-medium">Home</Link>
           </li>
-          <li className="text-gray-400">/</li>
+          <li>/</li>
           <li>
-            <Link href="/articles" className="text-sm font-medium hover:text-[#042a5c] transition-colors">
-              Articles
-            </Link>
+            <Link href="/articles" className="hover:underline font-medium">Articles</Link>
           </li>
-          <li className="text-gray-400">/</li>
-          <li className="text-gray-900 font-medium truncate max-w-[200px] sm:max-w-none">{article.title}</li>
+          <li>/</li>
+          <li className="text-gray-700 truncate">{article.title}</li>
         </ol>
       </nav>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }} />
     </>
   )
 }
@@ -170,114 +148,92 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <>
       <ArticleStructuredData article={article} />
-      <div className="min-h-screen bg-white">
+      <div className="bg-white min-h-screen">
         <ArticleHeader />
 
         <main className="w-full">
-          <div className="w-full px-4 md:px-6 py-6 sm:py-8">
+          <div className="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <Breadcrumbs article={article} />
 
-            {/* Article Header */}
-            <article className="mx-auto max-w-4xl">
-              <header className="mb-6 sm:mb-8">
-                <div className="mb-4 flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
-                  <div className="flex items-center gap-1">
-                    <Tag className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <span className="truncate">{article.category}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <span className="truncate">{article.readTime}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <time dateTime={article.date} className="truncate">
+            <article>
+              {/* Header */}
+              <header className="mb-10">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                  <span className="flex items-center gap-1">
+                    <Tag className="h-4 w-4 text-[#042a5c]" /> {article.category}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-4 w-4 text-[#042a5c]" /> {article.readTime}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Calendar className="h-4 w-4 text-[#042a5c]" />
+                    <time dateTime={article.date}>
                       {new Date(article.date).toLocaleDateString("en-US", {
                         year: "numeric",
-                        month: "long",
+                        month: "short",
                         day: "numeric",
                       })}
                     </time>
-                  </div>
-                  <div className="text-gray-600 truncate">By {article.author}</div>
+                  </span>
+                  <span className="text-gray-700">By {article.author}</span>
                 </div>
 
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-tight">
+                <h1 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900">
                   {article.title}
                 </h1>
-
-                <p className="mt-4 text-lg sm:text-xl text-gray-600 leading-relaxed">{article.excerpt}</p>
+                <p className="mt-3 text-lg text-gray-600">{article.excerpt}</p>
               </header>
 
-              {/* Article Content */}
+              {/* Content */}
               <div
-                className="article-content prose prose-sm sm:prose-base lg:prose-lg max-w-none 
-  prose-headings:text-gray-900 prose-headings:leading-tight
-  prose-h1:text-2xl sm:prose-h1:text-3xl 
-  prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:font-bold prose-h2:leading-snug
-  prose-h3:text-lg sm:prose-h3:text-xl 
-  prose-p:text-gray-700 prose-p:leading-relaxed
-  prose-strong:text-gray-900 
-  prose-blockquote:border-l-[#042a5c] prose-blockquote:text-gray-700 
-  prose-a:text-[#042a5c] prose-a:no-underline hover:prose-a:underline 
-  prose-img:rounded-lg prose-img:w-full
-  prose-ul:space-y-2 prose-ol:space-y-2
-  prose-li:text-gray-700"
+                className="prose prose-neutral prose-lg max-w-none leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
 
               {/* Author Bio */}
-              <div className="mt-8 sm:mt-12 border-t pt-6 sm:pt-8">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                  <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-full  flex items-center justify-center flex-shrink-0">
-                    <img src="/face22.png"></img>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg">Mohammed Kashalo</h3>
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                      Helping eCommerce businesses increase profits by 20-30% through profit optimization
-                      strategies.
+              <section className="mt-12 pt-6 border-t border-gray-200">
+                <div className="flex items-center gap-4">
+                  <img
+                    src="/face22.png"
+                    alt="Author avatar"
+                    className="h-14 w-14 rounded-full object-cover border"
+                  />
+                  <div>
+                    <h3 className="text-base font-semibold text-gray-900">Mohammed Kashalo</h3>
+                    <p className="text-sm text-gray-600">
+                      Helping eCommerce businesses increase profits by 20–30% through profit optimization strategies.
                     </p>
                   </div>
                 </div>
-              </div>
+              </section>
 
-              {/* CTA Section */}
-              <div className="mt-8 sm:mt-12 rounded-xl bg-[#042a5c] p-6 sm:p-8 text-center text-white">
-                <h2 className="text-xl sm:text-2xl font-bold">Ready to Get Similar Results?</h2>
-                <p className="mt-3 sm:mt-4 text-white/80 text-sm sm:text-base leading-relaxed">
+              {/* CTA */}
+              <section className="mt-12 rounded-lg bg-[#042a5c] p-6 sm:p-8 text-white text-center">
+                <h2 className="text-xl sm:text-2xl font-semibold">Ready to Get Similar Results?</h2>
+                <p className="mt-3 text-white/80">
                   Book a free profit audit call and discover exactly where your eCommerce business is bleeding money.
                 </p>
-                <div className="mt-4 sm:mt-6">
+                <div className="mt-5">
                   <a
                     href="https://calendly.com/mhdkashalo/business-diagnostic-call"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto"
                   >
-                    <Button
-                      size="lg"
-                      className="bg-white text-[#042a5c] hover:bg-white/90 text-base sm:text-lg w-full sm:w-auto"
-                    >
+                    <Button className="bg-white text-[#042a5c] hover:bg-white/90 text-base font-medium px-6 py-3">
                       🕵️ Get My Free Profit Audit
-                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </a>
                 </div>
-              </div>
+              </section>
             </article>
           </div>
         </main>
 
-        <footer className="border-t bg-white py-4 sm:py-6">
-          <div className="w-full flex flex-col items-center justify-between gap-4 px-4 md:px-6 md:flex-row">
-            <div className="flex items-center gap-2 font-bold">
-              <img src="/MKProfit.png" alt="MKProfit logo" className="h-5 sm:h-6 w-auto" />
-            </div>
-            <p className="text-center text-xs sm:text-sm text-gray-600">
-              © {new Date().getFullYear()} MKProfit. All rights reserved.
-            </p>
-          </div>
+        {/* Footer */}
+        <footer className="mt-16 border-t border-gray-100 py-6 text-sm text-center text-gray-500">
+          <img src="/MKProfit.png" alt="MKProfit logo" className="mx-auto h-6 mb-2" />
+          <p>© {new Date().getFullYear()} MKProfit. All rights reserved.</p>
         </footer>
       </div>
     </>
