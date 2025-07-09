@@ -1,10 +1,11 @@
 import { getArticleBySlug, getAllArticleSlugs } from "@/lib/articles"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Calendar, Clock, Tag } from "lucide-react"
+import { ArrowRight, Calendar, Clock, Tag, Share2, BookOpen } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { getBaseUrl } from "@/lib/seo-utils"
 import { ArticleHeader } from "@/components/article-header"
+import Image from "next/image"
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>
@@ -170,113 +171,183 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <>
       <ArticleStructuredData article={article} />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gray-50">
         <ArticleHeader />
 
-        <main className="w-full">
-          <div className="w-full px-4 md:px-6 py-6 sm:py-8">
-            <Breadcrumbs article={article} />
+        <main className="w-full max-w-7xl mx-auto px-4 md:px-6">
+          <Breadcrumbs article={article} />
 
-            {/* Article Header */}
-            <article className="mx-auto max-w-4xl">
-              <header className="mb-6 sm:mb-8">
-                <div className="mb-4 flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
-                  <div className="flex items-center gap-1">
-                    <Tag className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <span className="truncate">{article.category}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <span className="truncate">{article.readTime}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <time dateTime={article.date} className="truncate">
+          {/* Article Container */}
+          <div className="flex flex-col lg:flex-row gap-8 mb-16">
+            {/* Main Content */}
+            <article className="flex-1">
+              <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8">
+                {/* Article Header */}
+                <header className="mb-8">
+                  <div className="flex flex-wrap gap-3 mb-6">
+                    <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium flex items-center">
+                      <Tag className="h-4 w-4 mr-1" />
+                      {article.category}
+                    </span>
+                    <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm flex items-center">
+                      <Clock className="h-4 w-4 mr-1" />
+                      {article.readTime}
+                    </span>
+                    <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm flex items-center">
+                      <Calendar className="h-4 w-4 mr-1" />
                       {new Date(article.date).toLocaleDateString("en-US", {
                         year: "numeric",
-                        month: "long",
+                        month: "short",
                         day: "numeric",
                       })}
-                    </time>
+                    </span>
                   </div>
-                  <div className="text-gray-600 truncate">By {article.author}</div>
-                </div>
 
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-tight">
-                  {article.title}
-                </h1>
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+                    {article.title}
+                  </h1>
 
-                <p className="mt-4 text-lg sm:text-xl text-gray-600 leading-relaxed">{article.excerpt}</p>
-              </header>
+                  <p className="text-xl text-gray-600 mb-6">{article.excerpt}</p>
 
-              {/* Article Content */}
-              <div
-                className="article-content prose prose-sm sm:prose-base lg:prose-lg max-w-none 
-                prose-headings:text-gray-900 prose-headings:leading-tight
-                prose-h1:text-2xl sm:prose-h1:text-3xl 
-                prose-h2:text-xl sm:prose-h2:text-2xl 
-                prose-h3:text-lg sm:prose-h3:text-xl 
-                prose-p:text-gray-700 prose-p:leading-relaxed
-                prose-strong:text-gray-900 
-                prose-blockquote:border-l-[#042a5c] prose-blockquote:text-gray-700 
-                prose-a:text-[#042a5c] prose-a:no-underline hover:prose-a:underline 
-                prose-img:rounded-lg prose-img:w-full
-                prose-ul:space-y-2 prose-ol:space-y-2
-                prose-li:text-gray-700"
-                dangerouslySetInnerHTML={{ __html: article.content }}
-              />
-
-              {/* Author Bio */}
-              <div className="mt-8 sm:mt-12 border-t pt-6 sm:pt-8">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                  <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-full  flex items-center justify-center flex-shrink-0">
-                    <img src="/face22.png"></img>
+                  <div className="flex items-center justify-between border-t border-b border-gray-100 py-4">
+                    <div className="flex items-center">
+                      <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
+                        <Image 
+                          src="/face22.png" 
+                          alt="Mohammed Kashalo"
+                          width={40}
+                          height={40}
+                        />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Mohammed Kashalo</p>
+                        <p className="text-sm text-gray-600">Founder @ MKProfit</p>
+                      </div>
+                    </div>
+                    <button className="flex items-center text-gray-500 hover:text-blue-600 transition-colors">
+                      <Share2 className="h-5 w-5 mr-1" />
+                      <span className="text-sm">Share</span>
+                    </button>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg">Mohammed Kashalo</h3>
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                      Helping eCommerce businesses increase profits by 20-30% through profit optimization
-                      strategies.
-                    </p>
+                </header>
+
+                {/* Featured Image */}
+                {article.featuredImage && (
+                  <div className="mb-8 rounded-xl overflow-hidden">
+                    <Image
+                      src={article.featuredImage}
+                      alt={article.title}
+                      width={800}
+                      height={450}
+                      className="w-full object-cover"
+                    />
                   </div>
+                )}
+
+                {/* Article Content */}
+                <div
+                  className="prose prose-lg max-w-none 
+                  prose-headings:text-gray-900 prose-headings:font-bold
+                  prose-h2:text-2xl sm:prose-h2:text-3xl 
+                  prose-h3:text-xl sm:prose-h3:text-2xl 
+                  prose-p:text-gray-700 prose-p:leading-relaxed
+                  prose-strong:text-gray-900 
+                  prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-6 prose-blockquote:bg-blue-50 prose-blockquote:py-2 prose-blockquote:rounded-r-lg
+                  prose-a:text-blue-600 prose-a:font-medium hover:prose-a:text-blue-800 prose-a:transition-colors
+                  prose-img:rounded-xl prose-img:shadow-md
+                  prose-ul:list-disc prose-ol:list-decimal prose-li:marker:text-blue-500
+                  prose-pre:bg-gray-900 prose-pre:rounded-xl prose-pre:p-4
+                  prose-code:before:content-none prose-code:after:content-none prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md"
+                  dangerouslySetInnerHTML={{ __html: article.content }}
+                />
+
+                {/* Key Takeaways */}
+                <div className="bg-blue-50 rounded-xl p-6 my-10 border border-blue-100">
+                  <h3 className="flex items-center text-xl font-bold text-gray-900 mb-4">
+                    <BookOpen className="h-5 w-5 mr-2 text-blue-600" />
+                    Key Takeaways
+                  </h3>
+                  <ul className="space-y-2">
+                    {article.keyTakeaways?.map((takeaway: string, index: number) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-blue-500 mr-2">•</span>
+                        <span className="text-gray-700">{takeaway}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
               {/* CTA Section */}
-              <div className="mt-8 sm:mt-12 rounded-xl bg-[#042a5c] p-6 sm:p-8 text-center text-white">
-                <h2 className="text-xl sm:text-2xl font-bold">Ready to Get Similar Results?</h2>
-                <p className="mt-3 sm:mt-4 text-white/80 text-sm sm:text-base leading-relaxed">
-                  Book a free profit audit call and discover exactly where your eCommerce business is bleeding money.
+              <div className="mt-8 bg-[#042a5c] rounded-2xl p-8 text-center text-white">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Increase Your Profits?</h2>
+                <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-6">
+                  Get a free profit audit and discover how to boost your eCommerce profitability by 20-30%
                 </p>
-                <div className="mt-4 sm:mt-6">
+                <div className="mt-4">
                   <a
                     href="https://calendly.com/mhdkashalo/business-diagnostic-call"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto"
                   >
                     <Button
                       size="lg"
-                      className="bg-white text-[#042a5c] hover:bg-white/90 text-base sm:text-lg w-full sm:w-auto"
+                      className="bg-white text-blue-700 hover:bg-gray-100 font-semibold text-base sm:text-lg px-8 py-6 rounded-xl shadow-lg transition-all hover:scale-[1.02]"
                     >
                       🕵️ Get My Free Profit Audit
-                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                      <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </a>
                 </div>
               </div>
             </article>
+
+            {/* Sidebar */}
+            <aside className="lg:w-80 flex-shrink-0">
+              <div className="sticky top-24">
+                {/* Author Bio */}
+                <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="h-24 w-24 rounded-full bg-gray-200 overflow-hidden mb-4 border-4 border-white shadow-md">
+                      <Image 
+                        src="/face22.png" 
+                        alt="Mohammed Kashalo"
+                        width={96}
+                        height={96}
+                      />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Mohammed Kashalo</h3>
+                    <p className="text-gray-600 mb-4">
+                      Helping eCommerce businesses increase profits by 20-30% through proven profit optimization strategies.
+                    </p>
+                    <Button variant="outline" className="w-full">
+                      View Profile
+                    </Button>
+                  </div>
+                </div>
+
+                
+                
+              </div>
+            </aside>
           </div>
         </main>
 
-        <footer className="border-t bg-white py-4 sm:py-6">
-          <div className="w-full flex flex-col items-center justify-between gap-4 px-4 md:px-6 md:flex-row">
-            <div className="flex items-center gap-2 font-bold">
-              <img src="/MKProfit.png" alt="MKProfit logo" className="h-5 sm:h-6 w-auto" />
+        <footer className="bg-white border-t py-8">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="flex items-center mb-4 md:mb-0">
+                <Image 
+                  src="/MKProfit.png" 
+                  alt="MKProfit logo"
+                  width={120}
+                  height={40}
+                />
+              </div>
+              <p className="text-center text-sm text-gray-600">
+                © {new Date().getFullYear()} MKProfit. All rights reserved.
+              </p>
             </div>
-            <p className="text-center text-xs sm:text-sm text-gray-600">
-              © {new Date().getFullYear()} MKProfit. All rights reserved.
-            </p>
           </div>
         </footer>
       </div>
