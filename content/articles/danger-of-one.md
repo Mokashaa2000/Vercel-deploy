@@ -6,6 +6,10 @@ category: "Strategy"
 readTime: "10 min read"
 keywords: "ecommerce, one source, diversification, risk management, ecommerce strategy"
 author: "Mohammed Kashalo"
+keyTakeaways:
+- "Building your eCommerce business on just one traffic source, supplier, product, or audience creates fragile growth. What works today can collapse overnight."
+- "Relying heavily on one channel (like Meta Ads) puts your business at risk of platform changes, account bans, or rising ad costs — potentially killing your sales pipeline."
+- "Targeting only one customer type or region makes your brand vulnerable to market shifts and limits expansion opportunities."
 ---
 
 # The Dangerous Cost of “One”: Why eCommerce Brands Must Diversify to Grow Safely
