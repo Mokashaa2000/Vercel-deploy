@@ -16,6 +16,9 @@ export interface Article {
   content: string
   keywords?: string
   author?: string
+  featuredImage?: string
+  keyTakeaways?: string[]
+  headings?: { id: string; text: string }[]
 }
 
 export interface ArticleMetadata {
@@ -48,6 +51,9 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
     content: contentHtml,
     keywords: data.keywords,
     author: data.author || "eCommerce Profit Pro",
+    featuredImage: data.featuredImage || null,
+    keyTakeaways: data.keyTakeaways || [],
+    headings: data.headings || [],
   }
 }
 
