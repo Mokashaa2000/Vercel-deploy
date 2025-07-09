@@ -224,10 +224,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                         <p className="text-sm text-gray-600">Founder @ MKProfit</p>
                       </div>
                     </div>
-                    <button className="flex items-center text-gray-500 hover:text-blue-600 transition-colors">
-                      <Share2 className="h-5 w-5 mr-1" />
-                      <span className="text-sm">Share</span>
-                    </button>
+                    
                   </div>
                 </header>
 
@@ -320,9 +317,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     <p className="text-gray-600 mb-4">
                       Helping eCommerce businesses increase profits by 20-30% through proven profit optimization strategies.
                     </p>
+                    <Link href="https://www.linkedin.com/in/mohammedkashalo/">
                     <Button variant="outline" className="w-full">
                       View Profile
                     </Button>
+                    </Link>
                   </div>
                 </div>
 
