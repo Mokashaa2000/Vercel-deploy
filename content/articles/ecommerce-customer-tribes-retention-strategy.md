@@ -6,7 +6,7 @@ category: "Strategy"
 readTime: "8 min read"
 keywords: "ecommerce, customer retention, brand loyalty, CLTV, ecommerce strategy, DTC growth, customer experience"
 author: "Mohammed Kashalo"
-keyTakeawys:
+keyTakeaways:
 - "Relying solely on customer acquisition and first-time purchases is short-sighted."
 - "Sustainable growth comes from building emotional connections with customers."
 - "Returning customers spend 67% more than new ones."
