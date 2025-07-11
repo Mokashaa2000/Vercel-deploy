@@ -8,6 +8,11 @@ body {
 .calendly-badge-widget {
   display: none !important;
 }
+.article-content ul{
+    list-style: unset;
+    margin: 1rem;
+    padding: 1rem;
+}
 .article-content h2 {
   all: unset;
   font-size: 1.75rem;
