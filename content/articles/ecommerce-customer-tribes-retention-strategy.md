@@ -6,6 +6,12 @@ category: "Strategy"
 readTime: "8 min read"
 keywords: "ecommerce, customer retention, brand loyalty, CLTV, ecommerce strategy, DTC growth, customer experience"
 author: "Mohammed Kashalo"
+keyTakeawys:
+- "Relying solely on customer acquisition and first-time purchases is short-sighted."
+- "Sustainable growth comes from building emotional connections with customers."
+- "Returning customers spend 67% more than new ones."
+- "A tribe is a loyal community that shares your values, advocates for your brand, and offers feedback."
+- "Belonging is more powerful than discounts."
 ---
 
 # From Transactions to Tribes: Why eCommerce Brands Must Prioritize Customer Relationships
