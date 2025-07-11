@@ -8,6 +8,9 @@ body {
 .calendly-badge-widget {
   display: none !important;
 }
+.article-content p{
+  margin: 1rem;
+}
 .article-content ul{
     list-style: unset;
     margin: 1rem;
