@@ -2,7 +2,7 @@
 title: "How Improving Customer Retention Can Boost Your eCommerce Profits"
 date: "2025-07-26"
 excerpt: "Customer retention is often overlooked in favor of acquisition. However, focusing on retaining existing customers can lead to more sustainable profits. Here's how."
-category: "Ecommerce Strategy"
+category: "eCommerce Strategy"
 readTime: "7 min read"
 keywords: "ecommerce, customer retention, profitability, customer loyalty, retention strategies, ecommerce growth"
 author: "Mohammed Kashalo"
