@@ -79,13 +79,13 @@ Many founders make gut-based decisions and miss key metrics that signal trouble.
 
 Instead of chasing only top-line revenue, here’s what you should aim for:
 
-| Metric | Strategy to Improve |
-|--------|---------------------|
-| AOV | Smart upsells, bundles, tiered offers |
-| Retention | Post-purchase flow, subscriptions, loyalty |
-| Margin | Reduce shipping & ops costs, eliminate discount reliance |
-| Conversion | Better design, faster site, stronger copy |
-| CLTV | Personalization, reactivation campaigns, consistent value |
+| Metric     | Strategy to Improve                                      |
+|------------|----------------------------------------------------------|
+| AOV        | Smart upsells, bundles, tiered offers                    |
+| Retention  | Post-purchase flow, subscriptions, loyalty               |
+| Margin     | Reduce shipping & ops costs, eliminate discount reliance |
+| Conversion | Better design, faster site, stronger copy                |
+| CLTV       | Personalization, reactivation campaigns, consistent value |
 
 
 
