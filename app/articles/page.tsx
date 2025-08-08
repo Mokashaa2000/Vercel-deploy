@@ -4,6 +4,7 @@ import { ArrowRight, Calendar, Clock, Tag } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ArticleHeader } from "@/components/article-header"
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: "Articles & Case Studies | MKProfit",
@@ -137,4 +138,5 @@ export default function ArticlesPage() {
     </div>
   )
 }
+
 
