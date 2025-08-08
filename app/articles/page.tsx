@@ -19,6 +19,15 @@ export default function ArticlesPage() {
       <ArticleHeader />
 
       <main className="w-full">
+        <Script>
+          {`
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rvhftyoatx");
+          `}
+        </Script>
         {/* Hero Section */}
         <section className="py-16 md:py-24 w-full">
           <div className="w-full px-4 md:px-6">
@@ -128,3 +137,4 @@ export default function ArticlesPage() {
     </div>
   )
 }
+
