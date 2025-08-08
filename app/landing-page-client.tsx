@@ -44,6 +44,15 @@ export default function LandingPageClient() {
             gtag('config', 'G-3C83W62MYP');
           `}
         </Script>
+        <Script type="text/javascript" >
+          {`
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rvhftyoatx");
+    `}
+        </Script>
 
         <div className="w-full flex h-16 items-center justify-between px-4 md:px-6">
           <Link href="/" className="flex items-center gap-2 font-bold text-xl">
@@ -536,5 +545,6 @@ export default function LandingPageClient() {
   );
 
 }
+
 
 
