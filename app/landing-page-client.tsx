@@ -31,7 +31,7 @@ export default function LandingPageClient() {
     <div className={`${inter.className} flex min-h-screen flex-col`}>
       {/* Header and Mobile Menu Logic... (no changes here) */}
       <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
-        <link rel="canonical" href="https://mkprofit.co">
+        
 
          <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-3C83W62MYP"
@@ -547,6 +547,7 @@ export default function LandingPageClient() {
   );
 
 }
+
 
 
 
