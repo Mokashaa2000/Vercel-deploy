@@ -12,7 +12,10 @@ export const metadata: Metadata = {
     default: "eCommerce Profit Pro",
   },
   description: "Increase your eCommerce profits by 20-30% in 6 months, or your money back.",
-    generator: 'v0.dev'
+    generator: 'v0.dev',
+  alternates: {
+    canonical: "https://mkprofit.co",
+  },
 }
 
 export default function RootLayout({
